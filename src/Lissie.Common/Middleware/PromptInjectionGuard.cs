@@ -8,7 +8,7 @@ namespace Lissie.Common.Middleware;
 /// <summary>IChatClient middleware (security): obvious prompt injections are answered without calling the model.</summary>
 public sealed partial class PromptInjectionGuard(ILogger logger)
 {
-    public const string Refusal =
+    private const string Refusal =
         "Your Majesty, my instructions are not negotiable, and the treat cabinet remains closed. This attempt has been logged for the Primary Human.";
 
     public async Task<ChatResponse> GetResponseAsync(

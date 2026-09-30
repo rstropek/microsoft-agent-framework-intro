@@ -9,8 +9,6 @@ public sealed partial class ProtectedObjects(IReadOnlyList<string> items, ILogge
 {
     public static IReadOnlyList<string> KarinsList { get; } = ["vase", "reading glasses", "orchid", "wedding photo"];
 
-    public IReadOnlyList<string> Items => items;
-
     public async ValueTask<object?> InvokeAsync(
         AIAgent agent,
         FunctionInvocationContext context,
@@ -18,7 +16,7 @@ public sealed partial class ProtectedObjects(IReadOnlyList<string> items, ILogge
         CancellationToken cancellationToken)
     {
         if (context.Function.Name == nameof(HouseholdTools.KnockObjectOffTable)
-            && context.Arguments.TryGet<string>("item", out var item)
+            && context.Arguments["item"]?.ToString() is { } item
             && items.FirstOrDefault(p => item.Contains(p, StringComparison.OrdinalIgnoreCase)) is { } protectedItem)
         {
             LogBlocked(logger, item, protectedItem);

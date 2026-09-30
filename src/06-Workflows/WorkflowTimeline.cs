@@ -29,7 +29,7 @@ public static class WorkflowTimeline
                 EndSpeech();
                 switch (evt)
                 {
-                    case WorkflowStartedEvent or SuperStepCompletedEvent:
+                    case WorkflowStartedEvent or SuperStepCompletedEvent or ExecutorCompletedEvent { Data: null }:
                         break;
                     case SuperStepStartedEvent step:
                         Line($"-- superstep {step.StepNumber} --", ConsoleColor.DarkGray);
@@ -41,7 +41,7 @@ public static class WorkflowTimeline
                         Line($"invoked   {invoked.ExecutorId} <- {Describe(invoked.Data)}", ConsoleColor.DarkGray);
                         break;
                     case ExecutorCompletedEvent completed:
-                        Line($"completed {completed.ExecutorId}{(completed.Data is null ? "" : $" -> {Describe(completed.Data)}")}", ConsoleColor.DarkGray);
+                        Line($"completed {completed.ExecutorId} -> {Describe(completed.Data)}", ConsoleColor.DarkGray);
                         break;
                     case TriageDecisionEvent { CaseFile: var c }:
                         Line($"DECISION  {c.CaseNumber}: {c.Category}, urgency {c.Triage.Urgency} - \"{c.Triage.Summary}\"", ConsoleColor.Magenta);
