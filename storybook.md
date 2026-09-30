@@ -42,11 +42,11 @@ Presenter cheat sheet. Run every command from the repo root. Type `exit` to quit
   ```
 - [ ] Live-code prep (optional): delete the snippets listed under *Live-code* below. `git status` shows only those files.
 - [ ] Terminal layout:
-  - Tab 1 **demo**: steps 01-07, later `side/AgUiConsole`
-  - Tab 2 **host**: `src/08-AgUi` (only in 08)
+  - Tab 1 **demo**: steps 01-07, later [`side/AgUiConsole`](side/AgUiConsole)
+  - Tab 2 **host**: [`src/08-AgUi`](src/08-AgUi) (only in 08)
   - Tab 3 **tools**: `curl`, MCPJam, scripts
   - Browser: dashboard (Traces), later MCPJam inspector
-  - Editor: repo open, Explorer on `src/`
+  - Editor: repo open, Explorer on [`src/`](src)
 - [ ] Font size: terminal 20 pt or larger, editor zoom `Ctrl+=` 2-3 times, browser zoom 125-150 %.
 
 ---
@@ -54,8 +54,8 @@ Presenter cheat sheet. Run every command from the repo root. Type `exit` to quit
 ## 01 Hello Lissie
 
 **Show**
-1. `src/01-HelloLissie/Program.cs`: `AsAIAgent(model: ..., instructions: Persona.Instructions, name: "Staff")`, then `RunAsync` / `RunStreamingAsync` / `CreateSessionAsync`
-2. `src/Lissie.Common/Persona.cs`: `Persona.Instructions` (the household hierarchy)
+1. [`src/01-HelloLissie/Program.cs`](src/01-HelloLissie/Program.cs): `AsAIAgent(model: ..., instructions: Persona.Instructions, name: "Staff")`, then `RunAsync` / `RunStreamingAsync` / `CreateSessionAsync`
+2. [`src/Lissie.Common/Persona.cs`](src/Lissie.Common/Persona.cs): `Persona.Instructions` (the household hierarchy)
 
 **Run**
 ```bash
@@ -77,8 +77,8 @@ Prints two scripted answers (`=== RunAsync ===`, `=== RunStreamingAsync ===`), t
 ## 02 Tools
 
 **Show**
-1. `src/02-Tools/Program.cs`: `RateNapSpot` (inline tool), `AIFunctionFactory.Create`, `new ApprovalRequiredAIFunction(...)`, the `ToolApprovalRequestContent` loop
-2. `src/Lissie.Common/HouseholdTools.cs`: `SummonHuman(Human who, string reason)` + `[Description]`, `DispenseFood`
+1. [`src/02-Tools/Program.cs`](src/02-Tools/Program.cs): `RateNapSpot` (inline tool), `AIFunctionFactory.Create`, `new ApprovalRequiredAIFunction(...)`, the `ToolApprovalRequestContent` loop
+2. [`src/Lissie.Common/HouseholdTools.cs`](src/Lissie.Common/HouseholdTools.cs): `SummonHuman(Human who, string reason)` + `[Description]`, `DispenseFood`
 
 **Live-code:** `RateNapSpot` (local function with `[Description]`) and its line `AIFunctionFactory.Create(RateNapSpot, name: nameof(RateNapSpot)),` in `tools:`.
 
@@ -103,7 +103,7 @@ dotnet run --project src/02-Tools
 
 ### Optional beat: provider switch
 
-**Show:** `src/Lissie.Common/AgentSetup.cs`: the `switch` on `LLM_PROVIDER` in `CreateChatClient()`. Step 02 and later only; step 01 stays on Azure.
+**Show:** [`src/Lissie.Common/AgentSetup.cs`](src/Lissie.Common/AgentSetup.cs): the `switch` on `LLM_PROVIDER` in `CreateChatClient()`. Step 02 and later only; step 01 stays on Azure.
 
 **Run (OpenRouter, tested):**
 ```bash
@@ -138,9 +138,9 @@ LLM_PROVIDER=openai-compatible LLM_ENDPOINT=http://localhost:11434/v1 LLM_MODEL=
 ## 03 Middleware
 
 **Show**
-1. `src/03-Middleware/Program.cs`: `PeekAtToolCall`, `.UsePromptInjectionGuard(logger)` (chat client), `.Use(runFunc: ..., runStreamingFunc: ...)`, `.UseDietPolicy(DietLimits.Karin, logger)`, `.UseProtectedObjects(...)`
-2. `src/Lissie.Common/Middleware/DietPolicy.cs`: `InvokeAsync`, the `DENIED by Karin's diet policy` return (the tool never runs)
-3. `src/Lissie.Common/Middleware/PromptInjectionGuard.cs`: `Injection()` regex, `Refusal` (no model call)
+1. [`src/03-Middleware/Program.cs`](src/03-Middleware/Program.cs): `PeekAtToolCall`, `.UsePromptInjectionGuard(logger)` (chat client), `.Use(runFunc: ..., runStreamingFunc: ...)`, `.UseDietPolicy(DietLimits.Karin, logger)`, `.UseProtectedObjects(...)`
+2. [`src/Lissie.Common/Middleware/DietPolicy.cs`](src/Lissie.Common/Middleware/DietPolicy.cs): `InvokeAsync`, the `DENIED by Karin's diet policy` return (the tool never runs)
+3. [`src/Lissie.Common/Middleware/PromptInjectionGuard.cs`](src/Lissie.Common/Middleware/PromptInjectionGuard.cs): `Injection()` regex, `Refusal` (no model call)
 
 **Live-code:** `PeekAtToolCall` (local function) and `.Use(PeekAtToolCall)` in the agent builder.
 
@@ -172,7 +172,7 @@ Log lines to point at: `Lissie -> Staff: ...`, `Staff done in ... ms | tools use
 ## 04 Observability
 
 **Show**
-1. `src/04-Observability/Program.cs`: `Sdk.CreateTracerProviderBuilder()` / `AddOtlpExporter`, `UseOpenTelemetry(... EnableSensitiveData = true)` on the chat client **and** on the agent, `activitySource.StartActivity("Inspect sunny spot")` in `InspectSunnySpot`
+1. [`src/04-Observability/Program.cs`](src/04-Observability/Program.cs): `Sdk.CreateTracerProviderBuilder()` / `AddOtlpExporter`, `UseOpenTelemetry(... EnableSensitiveData = true)` on the chat client **and** on the agent, `activitySource.StartActivity("Inspect sunny spot")` in `InspectSunnySpot`
 
 **Live-code:** in `InspectSunnySpot`: `using var activity = activitySource.StartActivity("Inspect sunny spot");` + `activity?.SetTag(...)`.
 
@@ -201,10 +201,10 @@ dotnet run --project src/04-Observability
 ## 05 MCP: one tool implementation, two hosts
 
 **Show**
-1. `src/Lissie.SmartHome/SmartHomeTools.cs`: plain methods + `[Description]`, `Functions` (`AIFunctionFactory.Create`)
-2. `src/Lissie.SmartHome/Lissie.SmartHome.csproj`: only `Microsoft.Extensions.AI.Abstractions`
-3. `side/SmartHomeMcp/Program.cs`: `smartHome.Functions.Select(function => McpServerTool.Create(function))`, no tool logic
-4. `src/05-Mcp/Program.cs`: the one differing line: `mcpClient is null ? new SmartHomeTools().Functions : await mcpClient.ListToolsAsync()`
+1. [`src/Lissie.SmartHome/SmartHomeTools.cs`](src/Lissie.SmartHome/SmartHomeTools.cs): plain methods + `[Description]`, `Functions` (`AIFunctionFactory.Create`)
+2. [`src/Lissie.SmartHome/Lissie.SmartHome.csproj`](src/Lissie.SmartHome/Lissie.SmartHome.csproj): only `Microsoft.Extensions.AI.Abstractions`
+3. [`side/SmartHomeMcp/Program.cs`](side/SmartHomeMcp/Program.cs): `smartHome.Functions.Select(function => McpServerTool.Create(function))`, no tool logic
+4. [`src/05-Mcp/Program.cs`](src/05-Mcp/Program.cs): the one differing line: `mcpClient is null ? new SmartHomeTools().Functions : await mcpClient.ListToolsAsync()`
 
 **Run A: tools in-process**
 ```bash
@@ -250,17 +250,17 @@ Header `=== Smart home tools (via MCP server) ===`, and the list is identical to
 
 Cosmetic: string results arrive over MCP with extra quotes (`<- "Dispensed ..."`).
 
-**If it breaks:** MCP server down → `scripts/start-backends.sh`. Numbers are off from a rehearsal → `scripts/stop-backends.sh && scripts/start-backends.sh`. If time runs short, Run A alone makes the point.
+**If it breaks:** MCP server down → [`scripts/start-backends.sh`](scripts/start-backends.sh). Numbers are off from a rehearsal → `scripts/stop-backends.sh && scripts/start-backends.sh`. If time runs short, Run A alone makes the point.
 
 ---
 
 ## 06 Workflows
 
 **Show**
-1. `src/06-Workflows/Program.cs`: `AgentWorkflowBuilder.BuildSequential(...)`, then `new WorkflowBuilder(triage)` ... `.AddSwitch(openCase, ...)` ... `.WithOutputFrom(notice)`
-2. `src/06-Workflows/CaseFile.cs`: `ComplaintTriage` (the structured-output schema)
-3. `src/06-Workflows/OpenCaseExecutor.cs`: `TriageDecisionEvent`
-4. `src/06-Workflows/WorkflowTimeline.cs`: `WatchStreamAsync`, `RunTimeout` (60 s)
+1. [`src/06-Workflows/Program.cs`](src/06-Workflows/Program.cs): `AgentWorkflowBuilder.BuildSequential(...)`, then `new WorkflowBuilder(triage)` ... `.AddSwitch(openCase, ...)` ... `.WithOutputFrom(notice)`
+2. [`src/06-Workflows/CaseFile.cs`](src/06-Workflows/CaseFile.cs): `ComplaintTriage` (the structured-output schema)
+3. [`src/06-Workflows/OpenCaseExecutor.cs`](src/06-Workflows/OpenCaseExecutor.cs): `TriageDecisionEvent`
+4. [`src/06-Workflows/WorkflowTimeline.cs`](src/06-Workflows/WorkflowTimeline.cs): `WatchStreamAsync`, `RunTimeout` (60 s)
 
 **Live-code:** the `AgentWorkflowBuilder.BuildSequential(chatClient.CreateAgent("Lissie", Staff.Lissie), chatClient.CreateAgent("Diplomat", Staff.Diplomat))` statement.
 
@@ -298,10 +298,10 @@ Spares: `I want tuna. Now.` (Food), `Rainer is on stage instead of scratching my
 ## 07 A2A
 
 **Show**
-1. `side/VetAgent/Program.cs`: `AddAIAgent(...).WithAITool(DietRules.LookupFunction)`, `.AddA2AServer()`, `MapA2AHttpJson`, `MapWellKnownAgentCard` (the `Description` is what the main model reads)
-2. `side/VetAgent/DietRules.cs`: `LookupDietRules`, "At most 5 treats per day."
-3. `src/07-A2A/Program.cs`: `vetCard.AsAIAgent()`, direct `vet.RunAsync(question, consultation)`, `tools: [vet.AsAIFunction(), humanTracker.AsAIFunction()]`
-4. `src/07-A2A/RemoteAgents.cs`: `A2ACardResolver`
+1. [`side/VetAgent/Program.cs`](side/VetAgent/Program.cs): `AddAIAgent(...).WithAITool(DietRules.LookupFunction)`, `.AddA2AServer()`, `MapA2AHttpJson`, `MapWellKnownAgentCard` (the `Description` is what the main model reads)
+2. [`side/VetAgent/DietRules.cs`](side/VetAgent/DietRules.cs): `LookupDietRules`, "At most 5 treats per day."
+3. [`src/07-A2A/Program.cs`](src/07-A2A/Program.cs): `vetCard.AsAIAgent()`, direct `vet.RunAsync(question, consultation)`, `tools: [vet.AsAIFunction(), humanTracker.AsAIFunction()]`
+4. [`src/07-A2A/RemoteAgents.cs`](src/07-A2A/RemoteAgents.cs): `A2ACardResolver`
 
 **Live-code:** `tools: [vet.AsAIFunction(), humanTracker.AsAIFunction()]`.
 
@@ -356,16 +356,16 @@ Prints `=== Discovery ===` (both cards), then `=== Direct call: VetAgent ===` (4
 | `I demand tuna for dinner and someone to open the can. Can that happen tonight?` | Tracker: Karin back in ~45 min, cleared for can duty. Often also the vet: tuna one tablespoon, once a week |
 | `Karin promised me treats when she is back. How many do I get, and when?` | **Both** agents in one turn: at most 5 treats, Karin in ~45 min |
 
-**If it breaks:** `No A2A agent at http://localhost:5201` → `scripts/start-backends.sh`, rerun. If the tracker answers only for Karin, type `And Rainer?`.
+**If it breaks:** `No A2A agent at http://localhost:5201` → [`scripts/start-backends.sh`](scripts/start-backends.sh), rerun. If the tracker answers only for Karin, type `And Rainer?`.
 
 ---
 
 ## 08 AG-UI finale
 
 **Show**
-1. `src/08-AgUi/Program.cs`: `builder.Services.AddAGUIServer()`, the `tools: [household.SummonHumanFunction, household.KnockObjectOffTableFunction, .. smartHomeTools, vet.AsAIFunction(), humanTracker.AsAIFunction()]` line, the middleware chain, `.WithInMemorySessionStore(...)`, `app.MapAGUIServer(staff, "/")`
-2. `src/Lissie.Common/Telemetry/LissieTelemetry.cs`: `AddLissieTelemetry` (one trace across processes)
-3. `side/AgUiConsole/Program.cs`: plain `HttpClient` + `SseParser`, same `threadId`, only the new message
+1. [`src/08-AgUi/Program.cs`](src/08-AgUi/Program.cs): `builder.Services.AddAGUIServer()`, the `tools: [household.SummonHumanFunction, household.KnockObjectOffTableFunction, .. smartHomeTools, vet.AsAIFunction(), humanTracker.AsAIFunction()]` line, the middleware chain, `.WithInMemorySessionStore(...)`, `app.MapAGUIServer(staff, "/")`
+2. [`src/Lissie.Common/Telemetry/LissieTelemetry.cs`](src/Lissie.Common/Telemetry/LissieTelemetry.cs): `AddLissieTelemetry` (one trace across processes)
+3. [`side/AgUiConsole/Program.cs`](side/AgUiConsole/Program.cs): plain `HttpClient` + `SseParser`, same `threadId`, only the new message
 
 **Start order**
 1. Tab 3: fresh backend state (optional; only needed if more than 9 of the 12 daily treats went out via MCP, the standard 05 flow uses 8):
@@ -420,7 +420,7 @@ curl -N http://localhost:5300/ -H 'Content-Type: application/json' \
 3. Optional: **Structured logs**, resource `lissie-staff`: the ActivityLog lines `Lissie -> Staff: ...`
 
 **If it breaks:**
-- Host exits with `Nothing answers at ... Start the backends first` → `scripts/start-backends.sh`, then start the host again.
+- Host exits with `Nothing answers at ... Start the backends first` → [`scripts/start-backends.sh`](scripts/start-backends.sh), then start the host again.
 - `address already in use` → see *Troubleshooting*.
 - Treats rejected (`'Karin said no' mode`) → the daily counter is full from 05 or a rehearsal; reset with the Start order step 1.
 
@@ -470,4 +470,4 @@ scripts/stop-backends.sh --all    # additionally removes the aspire-dashboard co
   docker ps --filter name=aspire-dashboard --format '{{.Names}}: {{.Status}}'
   docker start aspire-dashboard
   ```
-  If the container does not exist, `scripts/start-backends.sh` creates it.
+  If the container does not exist, [`scripts/start-backends.sh`](scripts/start-backends.sh) creates it.
