@@ -60,7 +60,7 @@ LLM_PROVIDER=openai-compatible LLM_ENDPOINT=https://openrouter.ai/api/v1 LLM_MOD
   dotnet run --project src/02-Tools
 ```
 
-For Ollama, use `LLM_ENDPOINT=http://localhost:11434/v1`, a local tool-calling model and any dummy key (`LLM_API_KEY=ollama`). This setup is untested.
+For Ollama, use `LLM_ENDPOINT=http://localhost:11434/v1`, a local tool-calling model and any dummy key (`LLM_API_KEY=ollama`).
 
 ## Demo script
 

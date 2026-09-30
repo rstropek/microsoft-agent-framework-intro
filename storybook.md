@@ -105,7 +105,7 @@ dotnet run --project src/02-Tools
 
 **Show:** [`src/Lissie.Common/AgentSetup.cs`](src/Lissie.Common/AgentSetup.cs): the `switch` on `LLM_PROVIDER` in `CreateChatClient()`. Step 02 and later only; step 01 stays on Azure.
 
-**Run (OpenRouter, tested):**
+**Run (OpenRouter):**
 ```bash
 LLM_PROVIDER=openai-compatible LLM_ENDPOINT=https://openrouter.ai/api/v1 LLM_MODEL=z-ai/glm-5.3-flash \
   dotnet run --project src/02-Tools
@@ -123,7 +123,7 @@ LLM_PROVIDER=openai-compatible LLM_ENDPOINT=https://openrouter.ai/api/v1 LLM_MOD
 - GLM is wordier and may say a line before the tool call, which gives two `Staff>` answers in one turn.
 - OpenRouter latency is usually 1-2 s, with single spikes of 7-14 s. Just wait.
 
-**Run (Ollama, NOT tested: Ollama is not installed on the build machine):**
+**Run (Ollama):**
 ```bash
 LLM_PROVIDER=openai-compatible LLM_ENDPOINT=http://localhost:11434/v1 LLM_MODEL=gpt-oss:20b LLM_API_KEY=ollama \
   dotnet run --project src/02-Tools
