@@ -103,6 +103,13 @@ public static class ConsoleChat
                             break;
                     }
                 }
+
+                // End the line as soon as a response is finished, so log output of middleware starts on a fresh line
+                if (update.FinishReason is not null)
+                {
+                    EnsureNewLine();
+                    labelPending = true;
+                }
             }
 
             EnsureNewLine();
