@@ -4,6 +4,8 @@ Demo sample for the BASTA! session *"Agents mit C# - das Microsoft Agent Framewo
 The user of the chat bot is Lissie, a cat, and the agent is her personal staff. Its tools act on the household and its two humans: Karin, the Primary Human, and Rainer, the Secondary Human.
 The sample is split into eight small steps, from a first agent to a full agent behind AG-UI with tools, middleware, OpenTelemetry, MCP and A2A.
 
+This is demo code for a talk, not production software: no authentication, in-memory state, hard-coded ports and data.
+
 ## Prerequisites
 
 - .NET 10 SDK

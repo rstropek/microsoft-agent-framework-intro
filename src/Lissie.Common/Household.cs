@@ -28,17 +28,6 @@ public sealed class Household
 
     public FoodBowl Bowl { get; private set; } = new(FoodKind.Kibble, Grams: 12, CapacityGrams: 250);
 
-    public IReadOnlyList<string> ItemsOnTheFloor
-    {
-        get
-        {
-            lock (_lock)
-            {
-                return [.. _floor];
-            }
-        }
-    }
-
     public HumanStatus this[Human who] => who is Human.Primary ? Karin : Rainer;
 
     public FoodBowl AddFood(FoodKind kind, int grams)
