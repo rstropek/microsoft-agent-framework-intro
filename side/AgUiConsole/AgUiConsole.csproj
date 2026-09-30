@@ -1,15 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- Deliberately no package references: HttpClient + System.Net.ServerSentEvents (in-box) are all an AG-UI client needs -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AGUI.Client" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Lissie.Common\Lissie.Common.csproj" />
-  </ItemGroup>
 
 </Project>

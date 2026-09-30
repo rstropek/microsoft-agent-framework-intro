@@ -5,29 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup Label="Agent Framework">
-    <PackageVersion Include="Microsoft.Agents.AI" Version="1.23.0" />
     <PackageVersion Include="Microsoft.Agents.AI.OpenAI" Version="1.23.0" />
     <PackageVersion Include="Microsoft.Agents.AI.Workflows" Version="1.23.0" />
     <PackageVersion Include="Microsoft.Agents.AI.A2A" Version="1.23.0-preview.260928.1" />
-    <PackageVersion Include="Microsoft.Agents.AI.Hosting" Version="1.23.0-preview.260928.1" />
     <PackageVersion Include="Microsoft.Agents.AI.Hosting.A2A.AspNetCore" Version="1.23.0-preview.260928.1" />
     <PackageVersion Include="Microsoft.Agents.AI.Hosting.AGUI.AspNetCore" Version="1.23.0-preview.260928.1" />
   </ItemGroup>
 
   <ItemGroup Label="Microsoft.Extensions.AI + model provider">
-    <PackageVersion Include="Microsoft.Extensions.AI" Version="10.10.0" />
     <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="10.10.1" />
-    <PackageVersion Include="Microsoft.Extensions.AI.OpenAI" Version="10.10.1" />
-    <PackageVersion Include="OpenAI" Version="2.14.0" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
   </ItemGroup>
 
   <ItemGroup Label="Protocols">
     <PackageVersion Include="ModelContextProtocol" Version="2.2.0" />
     <PackageVersion Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
-    <PackageVersion Include="A2A" Version="1.0.0-preview2" />
-    <PackageVersion Include="A2A.AspNetCore" Version="1.0.0-preview2" />
-    <PackageVersion Include="AGUI.Client" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="OpenTelemetry">
@@ -39,12 +31,9 @@
   </ItemGroup>
 
   <ItemGroup Label="Microsoft.Extensions">
-    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.12" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.12" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.12" />
   </ItemGroup>
 

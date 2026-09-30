@@ -1,6 +1,7 @@
 using A2A;
 using A2A.AspNetCore;
 using Lissie.Common;
+using Lissie.Common.Telemetry;
 using Microsoft.Agents.AI.Hosting;
 using VetAgent;
 
@@ -9,6 +10,7 @@ const string Url = "http://localhost:5201/";
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddLissieChatClient();
+builder.AddLissieTelemetry("vet-agent");
 
 // An ordinary agent with its own instructions and one local tool ...
 var vet = builder.AddAIAgent(Name, DietRules.Instructions)

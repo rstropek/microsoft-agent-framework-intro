@@ -2,6 +2,7 @@ using A2A;
 using A2A.AspNetCore;
 using HumanTrackerAgent;
 using Lissie.Common;
+using Lissie.Common.Telemetry;
 using Microsoft.Agents.AI.Hosting;
 
 const string Name = "HumanTrackerAgent";
@@ -9,6 +10,7 @@ const string Url = "http://localhost:5202/";
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddLissieChatClient();
+builder.AddLissieTelemetry("human-tracker-agent");
 
 // An ordinary agent with its own instructions and one local tool ...
 var tracker = builder.AddAIAgent(Name, HumanCalendar.Instructions)

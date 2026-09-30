@@ -18,9 +18,9 @@ public static class LissieTelemetry
         /// </summary>
         public IHostApplicationBuilder AddLissieTelemetry(string serviceName)
         {
-            // Source and meter names verified against the restored packages (Agent Framework, M.E.AI, Workflows, MCP, A2A)
+            // Source and meter names verified against the restored packages (Agent Framework, M.E.AI, Workflows, MCP, A2A, AG-UI)
             string[] sources = ["Experimental.Microsoft.Agents.AI", "Experimental.Microsoft.Extensions.AI", "Microsoft.Agents.AI.Workflows",
-                "Experimental.ModelContextProtocol", "A2A", "A2A.AspNetCore"];
+                "Experimental.ModelContextProtocol", "A2A", "A2A.AspNetCore", "Experimental.AGUI.Server"];
             string[] meters = ["Experimental.Microsoft.Agents.AI", "Experimental.Microsoft.Extensions.AI", "Experimental.ModelContextProtocol", "A2A"];
 
             builder.Logging.AddOpenTelemetry(logging => logging.IncludeFormattedMessage = true);
