@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+artifacts/
+*.binlog
+
+# Backend logs and pid files written by scripts/
+.logs/
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+# OS
+.DS_Store
+Thumbs.db

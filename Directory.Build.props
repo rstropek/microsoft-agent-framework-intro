@@ -1,0 +1,18 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <IsPackable>false</IsPackable>
+    <!-- One shared user-secrets store for all projects (set once via src/Lissie.Common). -->
+    <UserSecretsId>b29e6405-87c8-414e-8891-2b3a3b84f421</UserSecretsId>
+    <!-- OPENAI001: the OpenAI SDK marks the Responses API [Experimental]; it is the recommended Agent Framework backend. -->
+    <NoWarn>$(NoWarn);OPENAI001</NoWarn>
+  </PropertyGroup>
+
+</Project>

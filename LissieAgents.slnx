@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Lissie.Common/Lissie.Common.csproj" />
+    <Project Path="src/Lissie.SmartHome/Lissie.SmartHome.csproj" />
+    <Project Path="src/01-HelloLissie/HelloLissie.csproj" />
+    <Project Path="src/02-Tools/Tools.csproj" />
+    <Project Path="src/03-Middleware/Middleware.csproj" />
+    <Project Path="src/04-Observability/Observability.csproj" />
+    <Project Path="src/05-Mcp/Mcp.csproj" />
+    <Project Path="src/06-Workflows/Workflows.csproj" />
+    <Project Path="src/07-A2A/A2ADemo.csproj" />
+    <Project Path="src/08-AgUi/AgUi.csproj" />
+  </Folder>
+  <Folder Name="/side/">
+    <Project Path="side/SmartHomeMcp/SmartHomeMcp.csproj" />
+    <Project Path="side/VetAgent/VetAgent.csproj" />
+    <Project Path="side/HumanTrackerAgent/HumanTrackerAgent.csproj" />
+    <Project Path="side/AgUiConsole/AgUiConsole.csproj" />
+  </Folder>
+</Solution>
