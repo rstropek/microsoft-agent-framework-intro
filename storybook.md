@@ -53,6 +53,10 @@ Presenter cheat sheet. Run every command from the repo root. Type `exit` to quit
 
 ## 01 Hello Lissie
 
+**Slide:** introduce the user before any code.
+
+<img src="her_majesty.jpeg" alt="Slide: Her Majesty Lissie I." width="480">
+
 **Show**
 1. [`src/01-HelloLissie/Program.cs`](src/01-HelloLissie/Program.cs): `AsAIAgent(model: ..., instructions: Persona.Instructions, name: "Staff")`, then `RunAsync` / `RunStreamingAsync` / `CreateSessionAsync`
 2. [`src/Lissie.Common/Persona.cs`](src/Lissie.Common/Persona.cs): `Persona.Instructions` (the household hierarchy)
@@ -98,6 +102,10 @@ dotnet run --project src/02-Tools
 | **`n`** | `<- Tool call invocation rejected.` |
 | `I need someone to open a can. Summon a human.` | `SummonHuman(Primary)`: Karin out for groceries → `SummonHuman(Secondary)`: Rainer "sighed audibly, saved nothing" |
 | `Push the coffee mug off the table and rate the keyboard as a nap spot.` | Two tools: mug "shattered magnificently"; keyboard 10/10 "stops the Secondary Human from working" |
+
+**Slide:** right after the **`n`**.
+
+<img src="danger.jpeg" alt="Slide: REJECTED, ERR_HUMAN_SAID_NO" width="480">
 
 **If it breaks:** live-coding fails to compile → `git restore src/02-Tools/Program.cs`, rerun.
 

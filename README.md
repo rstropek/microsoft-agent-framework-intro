@@ -1,5 +1,7 @@
 # Lissie's Staff
 
+![Her Majesty Lissie I., the user of the chat bot](her_majesty.jpeg)
+
 Demo sample for the BASTA! session *"Agents mit C# - das Microsoft Agent Framework"* (Microsoft Agent Framework, .NET 10, C# 14).
 The user of the chat bot is Lissie, a cat, and the agent is her personal staff. Its tools act on the household and its two humans: Karin, the Primary Human, and Rainer, the Secondary Human.
 The sample is split into eight small steps, from a first agent to a full agent behind AG-UI with tools, middleware, OpenTelemetry, MCP and A2A.
@@ -47,6 +49,10 @@ dotnet run --project src/02-Tools
 | `side/SmartHomeMcp` | HTTP MCP server (http://localhost:5101/mcp), hosting the tools from `src/Lissie.SmartHome` |
 | `side/VetAgent`, `side/HumanTrackerAgent` | A2A agents on http://localhost:5201 and http://localhost:5202 |
 | `side/AgUiConsole` | AG-UI console client that prints every protocol event |
+
+Step 02 in one picture: the human in the loop said no.
+
+![Rejected: the human declined the tool call for 40 grams of treats](danger.jpeg)
 
 For the finale, run `scripts/start-backends.sh`, then `dotnet run --project src/08-AgUi` and, in a second terminal, `dotnet run --project side/AgUiConsole`.
 
